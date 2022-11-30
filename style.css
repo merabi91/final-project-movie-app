@@ -12,6 +12,7 @@ body {
 /* ::-webkit-scrollbar {
     display: none;
 } */
+
 .card {
     width: clamp(150px, 95vw, 250px);
     box-shadow: 0 0 0.5rem rgba(255, 0, 0, 1);
