@@ -60,12 +60,19 @@ async function get_movie_by_id (id) {
     return respData.results
 }
 
+async function get_movie_trailer (id) {
+    const resp = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
+    const respData = await resp.json()
+    return respData.results[0].key
+}
+
 async function show_popup (card) {
     popup_container.classList.add('show-popup')
 
     const movie_id = card.getAttribute('data-id')
-    const movie = await get_movie_by_id(movie_id)
-    
+    const movie = await get_movie_by_id(movie_id) 
+    const movie_trailer = await get_movie_trailer(movie_id)
+
     popup_container.style.background = `linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, 1)), url(${image_path + movie})`
 
     // popup_container.innerHTML = `
